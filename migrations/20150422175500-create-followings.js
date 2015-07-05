@@ -25,6 +25,6 @@ module.exports = {
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable("followings").done(done);
+    migration.dropTable("followings");
   }
 };
