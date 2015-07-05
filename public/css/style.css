@@ -1,0 +1,336 @@
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text:600,400);
+@import url(http://fonts.googleapis.com/css?family=Handlee);
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  background-color: #FFFFFF;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+h1 {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 200;  
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px 0px;
+  margin: 0px 0px;
+}
+
+li {
+
+}
+
+.navbar-default {
+    border-color: transparent;
+    background-color: #797a7e;
+}
+
+.navbar-default .navbar-brand {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    color: #FF6B6B;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:active,
+.navbar-default .navbar-brand.active {
+    color: #404040;
+}
+
+.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,.02);
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #FF6B6B;
+    background-color: #FF6B6B;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #FF6B6B;
+}
+
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #404040;
+}
+
+.navbar-default .nav li a:hover,
+.navbar-default .nav li a:focus {
+    outline: 0;
+    color: #FF6B6B;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    border-radius: 0;
+    color: #fff;
+    background-color: #FF6B6B;
+}
+
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #404040;
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+        padding: 10px 0;
+        border: 0;
+        background-color: transparent;
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s;
+    }
+
+    .navbar-default .navbar-brand {
+        font-size: 3em;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .navbar-default .navbar-nav>.active>a {
+        border-radius: 3px;
+    }
+
+    .navbar-default.navbar-shrink {
+        padding: 10px 0;
+/*        background-color: #797a7e;*/
+/*        background-image: url("../images/menu-background.png");*/
+        background: #DCDCDC; 
+    }
+
+    .navbar-default.navbar-shrink .navbar-brand {
+        font-size: 1.5em;
+    }
+}
+
+.menu-options {
+  margin-left: 10px;
+  margin-top: 15px;
+  padding: 2px 5px 2px 5px;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 100;  
+  background-color: #900000;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.menu-options:hover {
+  background-color: 
+}
+
+#main {
+  margin-top: 100px;
+}
+
+.lists {
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.lists img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+#messages {
+  font-size: 16px; 
+  color: #000000;
+  width: 45%;
+  display: block;
+  position: relative;
+  float: left;
+/*  margin-top: 200px;*/
+/*  margin-left: 30px;*/
+}
+
+/*#logo {
+  padding-left: 9%;
+  font-family: 'Handlee', cursive;
+  font-size: 22px; 
+  font-weight: 200;
+  color: white;
+  width: 45%;
+  float: left;
+  height: 135px;
+}*/
+
+/*.account {
+  display: block;
+  float: right;
+  margin-top: 0;
+  margin-right: 35px;
+}
+
+.main_view {
+  background-color: #FFFFFF;
+  padding: 20px 20px 20px 45px; 
+  margin-top: 10px;
+  display: block;
+  width: 27%;
+  float: left;
+  height: auto;
+  position: relative;
+}
+*/
+/*.products_list {
+  background-color: #FFFFFF;
+  padding: 20px 20px 20px 45px; 
+  margin-top: 10px;
+  display: block;
+  width: 27%;
+  float: left;
+  height: auto;
+  position: relative;
+}*/
+
+/*#my_profile_temp {
+  background-color: #FFFFFF;
+  padding: 20px 20px 20px 20px; 
+  margin-top: 10px;
+  display: block;
+  width: 29%;
+  float: left;
+  height: auto;
+}*/
+
+.user_info_1 {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.user_info_2 {
+  margin-bottom: 35px;
+}
+
+.user_info_2 button {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.forms {
+  background-color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.forms li {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 200; 
+  font-size: 16px;
+}
+
+/*
+#first_product {
+  background-color: #FFFFFF;
+  padding: 20px 20px 20px 20px; 
+  margin-top: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+  clear: both;
+  height: auto;  
+}*/
+
+img {
+  max-width: 300px;
+}
+
+#mini_image {
+  max-width: 50px;
+  border-radius: 40%;
+}
+
+.product_picture {
+  max-width: 250px;
+}
+
+button {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  background: #900000;
+  color: white;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  margin-top: 2%;
+}
+
+button:hover {
+  background-color: #404040;
+}
+
+input, select {
+  background: #DCDCDC;
+  font-size: 20px;
+  padding-left: 10px;
+  width: 80%;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  outline: none;
+  border-radius: 6px;
+  border: none;
+}
+
+textarea {
+  background: #DCDCDC;
+  font-size: 20px;
+  padding-left: 10px;
+  width: 80%;
+  height: 200px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  outline: none;
+  border-radius: 6px;
+  border: none;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

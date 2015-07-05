@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>beauty shelf</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/app.js"></script>
+
+  <script src="/js/views/navigation_view.js"></script>
+
+  <script src="/js//models/users_model.js"></script>
+  <script src="/js/collections/users_collection.js"></script>
+  <script src="/js/views/user_view.js"></script>
+  <script src="/js/views/users_view.js"></script>
+
+  <script src="/js/views/create_profile_view.js"></script>  
+  <script src="/js/views/create_product_view.js"></script>  
+
+  <script src="/js/models/current_user_model.js"></script>  
+  <script src="/js/collections/current_user_collection.js"></script>
+  <script src="/js/views/current_user_view.js"></script>  
+  <script src="/js/views/current_users_view.js"></script>  
+
+  <script src="/js/models/suggestions_model.js"></script>
+  <script src="/js/collections/suggestions_collection.js"></script>
+  <script src="/js/views/show_suggest_view.js"></script>  
+  <script src="/js/views/show_suggests_view.js"></script>  
+
+  <script src="/js/models/products_model.js"></script>
+  <script src="/js/collections/products_collection.js"></script>
+  <script src="/js/views/product_list_view.js"></script>
+  <script src="/js/views/products_list_view.js"></script>
+
+  <script src="/js/views/my_profile_view.js"></script>   
+  <script src="/js/views/my_products_view.js"></script>      
+<!--   // <script src="/js/collections/my_products_collection.js"></script> -->
+  <script src="/js/views/my_product_view.js"></script>
+  <script src="/js/views/my_products_view.js"></script>
+
+  <script src="/js/models/following_model.js"></script>
+  <script src="/js/collections/following_collection.js"></script>
+  <script src="/js/views/following_view.js"></script>
+  <script src="/js/views/followings_view.js"></script>  
+
+</head>
+
+<body>
+
+  <section id="nav"></section>
+
+  <section id="main">
+<!--     <div class="container">
+      <div class="col-lg-12">
+        <div class="row">
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+
+<!--********* 
+  NAVIGATION 
+***********-->
+  <template id="navigation">  
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll">Beauty Shelf</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="menu-options" id="see_users">Users</li>
+            <li class="menu-options" id="see_products">Products</li>
+            <li class="menu-options" id="create">Create Account</li>
+            <li class="menu-options" id="login_button">Login</li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </template>
+<!--   <section id="fix-menu"></section> -->
+
+<!--********* 
+  NAVIGATION AFTER LOGIN
+***********-->
+  <template id="navigation_after_login">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand page-scroll">Beauty Shelf</a>
+        </div>    
+
+<!--     <div class="account"> -->
+      <div id="logged_profile" data-id="{{id}}"></div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="menu-options" id="my_profile">My Profile</li>
+            <li class="menu-options" id="see_my_products">My Products</li>
+            <li class="menu-options" id="see_my_suggestions">Suggestions</li>
+            <li class="menu-options" id="me_following">Following</li>
+            <li class="menu-options" id="me_followers">Followers</li>
+            <li class="menu-options" id="see_users">Users</li>
+            <li class="menu-options" id="see_all_products">Products</li>
+            <li class="menu-options" id="logout">Log Out</li>
+          </ul>          
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </template>
+
+<!--********* 
+  HOMEPAGE 
+***********-->
+  <template id="homepage">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+      <div class="lists">
+        <img src="{{user_picture}}"></img>        
+        <h1>{{name}}</h1>
+        <p>{{about}}</p>
+        <p>{{location}}</p>
+        <p>{{website}}<p>       
+        <button id="see_user" data-id="{{id}}">See User</button>
+      </div>
+
+    </div>
+  </template>
+
+<!--********* 
+  CREATE ACCOUNT 
+***********-->
+  <template id="create_profile">
+    <div class="container">
+      <div class="col-md-12">
+        <div class="forms">
+          <h1>Sign Up</h1>
+          <br>
+          <ul>
+          <li>Username *</li>
+          <li><input id="username" type="text"></input></li>
+          <li>Password *</li>
+          <li><input id="password" type="password"></input></li>
+          <li>Email *</li>
+          <li><input id="email" type="text"></input></li>
+
+          <li>Picture *</li>
+          <li><input id="user_picture" type="text"></input></li>
+          
+          <li>Name *</li>
+          <li><input id="name" type="text"></input></li>
+          <li>About me</li>
+          <li><textarea id="about" type="text"></textarea></li> 
+          <li>Location</li>    
+          <li><input id="location" type="text"></input></li>
+          <li>Website</li>
+          <li><input id="website" type="text"></input></li>
+
+          <br>
+
+          <li>Select a Skin Tone *</li>
+          <li><img src="images/skin_tone.jpg"></li>
+          <li><select id="create_skin_tone">
+            <option value="1" class="skin_tone"> 1 </option>
+            <option value="2" class="skin_tone"> 2 </option>
+            <option value="3" class="skin_tone"> 3 </option>
+            <option value="4" class="skin_tone"> 4 </option>
+            <option value="5" class="skin_tone"> 5 </option>
+            <option value="6" class="skin_tone"> 6 </option>
+            <option value="7" class="skin_tone"> 7 </option>
+            <option value="8" class="skin_tone"> 8 </option>
+            <option value="9" class="skin_tone"> 9 </option>
+            <option value="10" class="skin_tone"> 10 </option>
+            <option value="11" class="skin_tone"> 11 </option>
+          </select></li>
+
+          <br>
+
+          <li>Select a Skin Type *</li>
+          <li><img src="images/skin-types.jpg"></li>
+          <li><select id="create_skin_type">
+            <option value="Dry Skin" class="skin_type"> 1 - Dry Skin </option>
+            <option value="Normal Skin" class="skin_type"> 2 - Normal Skin </option>
+            <option value="Combination Skin" class="skin_type"> 3 - Combination Skin </option>
+            <option value="Oily Skin" class="skin_type"> 4 - Oily Skin </option>
+          </select></li>
+
+          <br>
+
+          <li>Select a Hair Type *</li>
+          <li><img src="images/type-2.jpg"></li>
+          <li><select id="create_hair_type">
+            <option value="1" class="hair_type"> Type 1 </option>
+            <option value="2a" class="hair_type"> Type 2a </option>
+            <option value="2b" class="hair_type"> Type 2b </option>
+            <option value="2c" class="hair_type"> Type 2c </option>
+            <option value="3a" class="hair_type"> Type 3a </option>
+            <option value="3b" class="hair_type"> Type 3b </option>
+            <option value="3c" class="hair_type"> Type 3c </option>
+            <option value="4a" class="hair_type"> Type 4a </option>
+            <option value="4b" class="hair_type"> Type 4b </option>
+          </select></li>
+
+          <br>
+
+          <li>Select a Hair Color *</li>
+          <li><img src="images/hair-color.png"></li>
+          <li><select id="create_hair_color">
+            <option value="Jet Black" class="hair_color"> 1 - Jet Black </option>
+            <option value="Natural Black" class="hair_color"> 2a - Natural Black </option>
+            <option value="Dark Brown" class="hair_color"> 2b - Dark Brown </option>
+            <option value="Medium Brown" class="hair_color"> 2c - Medium Brown </option>
+            <option value="Light Brown" class="hair_color"> 3a - Light Brown </option>
+            <option value="Light Golden Brown" class="hair_color"> 3b - Light Golden Brown </option>
+            <option value="Golden Blonde" class="hair_color"> 3c - Golden Blonde </option>
+            <option value="Light Ash Blonde" class="hair_color"> 4a - Light Ash Blonde </option>
+            <option value="Platinum Blonde" class="hair_color"> 4b - Platinium Blonde </option>
+            <option value="Auburn" class="hair_color"> 4b - Auburn </option>
+          </select></li>      
+          </ul>
+
+          <br>
+
+          <button id="save_profile">Save Profile</button>
+
+        </div>
+      </div>
+    </div>
+  </template>
+
+<!--********* 
+  SINGLE USER 
+***********-->
+  <template id="single_user">
+    <div class="container">
+      <div class="col-lg-4">
+        <div id="user_id" data-value="{{id}}"></div>
+        <img src="{{user_picture}}"></img> 
+        <h1>{{name}}</h1>
+        <p>{{about}}</p>
+        <p>{{location}}</p>
+        <p>{{website}}<p> 
+        <button id="follow_user" data-id="{{id}}">Follow User</button>
+      </div>
+
+      <div class="col-lg-8">
+        <div id="products">
+        {{#each products}}
+          <img class="product_picture" src="{{picture}}"></img>
+          <p>Product: {{product}}</p>
+          <p>Brand: {{brand}}</p>
+          <p>{{description}}</p>  
+          <p>{{website}}</p>
+          <p>My Rating: {{rating}}</p>
+          <p>My Review: {{review}}</p>
+          <img class="prod_homepage" src="picture_01"></img>
+          <img class="prod_homepage" src="picture_02"></img>
+          <img class="prod_homepage" src="picture_03"></img>
+        {{/each}}
+        </div>
+      </div>
+
+    </div>
+  </template>
+
+
+<!--********* 
+ VIEW MY PRODUCTS LIST
+***********-->
+  <template id="view_my_products_list">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+      <div class="lists">
+        <img class="product_picture" src="{{picture}}"></img>
+        {{#each products}}
+          <img class="product_picture" src="{{picture}}"></img>
+          <p>Product: {{product}}</p>
+          <p>Brand: {{brand}}</p>
+          <p>{{description}}</p>  
+          <p>{{website}}</p>
+          <p>My Rating: {{rating}}</p>
+          <p>My Review: {{review}}</p>
+  <!--         <img class="prod_homepage" src="picture_01"></img>
+          <img class="prod_homepage" src="picture_02"></img>
+          <img class="prod_homepage" src="picture_03"></img> -->
+        {{/each}}
+        <button id="view_product">View Product</button>
+      </div>
+    </div>
+  </template>  
+
+<!--********* 
+  USERS SUGGESTIONS 
+***********-->
+  <template id="profile_created">
+    <div>
+      <p>Your profile has been successfully created! Here are some suggestions for you :)</p>
+    </div>
+  </template>
+
+  <template id="my_first_product">
+    <button id="first_product">Add My Favorite Products Now</button>
+  </template>
+
+  <template id="suggested">
+    <div class="user_profile">
+      <h1 id="see_user" data-id="{{id}}">{{name}}</h1>
+      <button id="follow_user_suggest" data-id="{{id}}">Follow User</button>
+      <img src="{{user_picture}}"></img> 
+      <p>{{about}}</p>
+      <p>{{location}}</p>
+      <p>{{website}}<p>     
+      <div id="products">
+      <button id="see_suggest" data-id="{{id}}">See User</button>
+      </div>
+    </div>
+  </template>
+
+
+<!--********* 
+  LOGIN
+***********-->
+  <template id="login-template">
+    <div class="container">
+      <div class="col-md-12">
+        <div class="forms">
+          <h1>Sign Up</h1>
+          <br>
+          <ul>
+            <li>Username</li>
+            <li><input id="username_login" type="text" placeholder="Username"></input></li>
+            <li>Password</li>
+            <li><input id="password_login" type="password" placeholder="Password"></input></li>
+          </ul>
+          <button id="login_toAccount">Login</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+<!--********* 
+CURRENT USER TEMPLATE 
+***********-->
+  <template id="current_user">
+<!--     <div class="user_profile"> -->
+    <div class="container">
+      <div class="col-lg-4">
+        <div class="user_info_1">
+          <h1 id="current_user_id" data-id="{{id}}">{{name}}</h1>
+          <div id="my_user_id" data-id="{{id}}"></div>
+          <img src="{{user_picture}}"></img>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="user_info_2">
+          <button id="edit_profile">Edit Profile</button>
+          <button id="add_products">Add Products</button>
+          <p>{{about}}</p>
+          <p>{{location}}</p>
+          <p>{{website}}<p>
+          <p>{{skin_tone}}</p>
+          <p>{{skin_type}}</p>
+          <p>{{hair_type}}</p>
+          <p>{{hair_color}}</p>
+        </div>
+      </div>
+    </div>
+  </template>
+
+<!--********* 
+CURRENT USER TEMPLATE 
+***********-->
+<!--   <template id="my_profile_template">
+    <div class="container">
+      <div class="col-lg-4">
+        <h1 id="my_user_id" data-id="{{id}}">{{name}}</h1>
+        <img src="{{user_picture}}"></img>
+      </div>
+      <div class="col-lg-8">
+        <button id="edit_profile">Edit Profile</button>
+        <button id="add_products">Add Products</button>
+        <p>{{about}}</p>
+        <p>{{location}}</p>
+        <p>{{website}}<p>
+        <p>{{skin_tone}}</p>
+        <p>{{skin_type}}</p>
+        <p>{{hair_type}}</p>
+        <p>{{hair_color}}</p> 
+      </div> 
+    </div>
+  </template> -->
+
+<!--********* 
+  CREATE PRODUCT 
+***********-->
+  <template id="create_product">
+    <div class="forms">
+      <button id="search_product">Search Product</button>
+      <br>
+      <p>If you can't find your product, you can create your very own here, using a pretty picture and nice words!!! :)</p>
+      <ul>
+        <li>Picture Link</li>
+        <li><input id="picture" type="text"></input></li>
+        <li>Product Name</li>
+        <li><input id="product" type="text"></input></li> 
+        <li>Brand</li>  
+        <li><input id="brand" type="text"></input></li>  
+        <li>Description</li>
+        <li><input id="description" type="text"></input></li>
+        <li>Website</li>    
+        <li><input id="website" type="text"></input></li> 
+        <li>Your Rating</li> 
+        <li><input id="rating" type="text"></input></li>  
+        <li>Your Review</li>   
+        <li><input id="review" type="text"></input></li>
+      <ul>
+      <p id="user_id" data-id="{{id}}"></p>
+      <button id="save_product">Save Product</button>
+    </div>
+  </template>
+
+<!--********* 
+ VIEW PRODUCTS LIST
+***********-->
+  <template id="view_products_list">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+      <div class="lists">
+        <img class="product_picture" src="{{picture}}"></img>
+        <p>{{product}}</p>
+        <p>{{brand}}</p>
+        <p>Description: {{description}}</p>  
+        <p>{{website}}</p>
+        <button id="view_product">View Product</button>
+      </div>
+    </div>
+  </template>
+
+<!--********* 
+ VIEW SINGLE PRODUCT -> NOT USING!
+***********-->
+  <template id="view_single_product">
+    <div class="products_list">
+      <img class="product_picture" src="{{picture}}"></img>
+      <p>{{product}}</p>
+      <p>{{brand}}</p>
+      <p>Description: {{description}}</p>  
+      <p>{{website}}</p>
+        {{#each reviews}}
+          <h1>{{rating}}</h1>
+          <p>Review: {{review}}</p>
+        {{/each}}
+    </div>
+  </template>
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
