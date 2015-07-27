@@ -3,18 +3,11 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
-var pg        = require('pg');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || "development";
 var config    = require(__dirname + '/../config/config.json')[env];
-// var sequelize = new Sequelize(config.database, config.username, config.password, config);
+var sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  var query = client.query('SELECT * FROM USERS');
-  query.on('row', function(row) {
-    console.log(JSON.stringify(row));
-  });
-});
 
 if (process.env.HEROKU_POSTGRESQL_d6jb0stgq34feh_URL) {
     // the application is executed on Heroku ... use the postgres database
@@ -26,6 +19,7 @@ if (process.env.HEROKU_POSTGRESQL_d6jb0stgq34feh_URL) {
   } else {
     var sequelize = new Sequelize(config.database, config.username, config.password, config);
   }
+
 
 var db        = {};
 
